@@ -1,0 +1,42 @@
+{
+  "name": "build-react-component",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "esno scripts/build.ts",
+    "prettier": "prettier -c --write \"src/**/*\"",
+    "style-fix": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "eslint-fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src"
+  },
+  "peerDependencies": {
+    "antd": "^4.10.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/fs-extra": "^9.0.11",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "@types/through2": "^2.0.36",
+    "@types/vinyl-fs": "^2.4.11",
+    "@umijs/fabric": "^2.6.2",
+    "babel-plugin-import": "^1.13.3",
+    "babel-plugin-transform-import-styles": "^0.0.11",
+    "eslint": "^7.29.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "esno": "^0.7.3",
+    "fs-extra": "^10.0.0",
+    "gulp-if": "^3.0.0",
+    "gulp-less": "^5.0.0",
+    "prettier": "^2.3.2",
+    "through2": "^4.0.2",
+    "typescript": "^4.3.4",
+    "vinyl-fs": "^3.0.3"
+  }
+}
