@@ -21,3 +21,8 @@
 /src/.umi-production
 /src/.umi-test
 /.env.local
+
+# bundle
+es
+lib
+dist

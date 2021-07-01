@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button } from 'antd';
+// import { Button } from 'antd';
 import './style.less';
 
 interface HelloProps {
@@ -7,11 +7,7 @@ interface HelloProps {
 }
 
 const Hello: FC<HelloProps> = ({ text }) => {
-  return (
-    <h1 className="hello">
-      <Button typ="primary">{text}</Button>
-    </h1>
-  );
+  return <h1 className="hello">{/*<Button type="primary">{text}</Button>*/}</h1>;
 };
 
 export default Hello;
