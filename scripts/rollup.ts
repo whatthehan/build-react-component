@@ -19,8 +19,10 @@ function rollup(): RollupOptions {
         react: 'React',
         'react-dom': 'ReactDOM',
         antd: 'Antd',
+        'react/jsx-runtime': 'jsxRuntime',
       },
     },
+    external: ['react', 'react-dom', 'antd', 'react/jsx-runtime'],
     plugins: [
       postcss({
         extract: true,

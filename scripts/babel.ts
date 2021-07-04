@@ -1,6 +1,6 @@
 import babel from '@babel/core';
 
-export function getBabelConfig(type: 'cjs' | 'esm') {
+export function getBabelConfig(type: 'cjs' | 'esm' | 'umd') {
   return {
     babelrc: false,
     configFile: false,
