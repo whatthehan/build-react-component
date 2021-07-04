@@ -2,12 +2,11 @@ import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import autoprefixer, { defaults } from 'autoprefixer';
-import url from '@rollup/plugin-url';
 import babel from '@rollup/plugin-babel';
+import { RollupOptions } from 'rollup';
 import { getBabelConfig } from './babel';
 
-function rollup() {
+function rollup(): RollupOptions {
   const babelConfig = getBabelConfig('cjs');
 
   return {
@@ -23,18 +22,15 @@ function rollup() {
       },
     },
     plugins: [
-      url(),
       postcss({
-        exact: true,
-        // inject: false,
-        // // modules: false,
-        // // minimize: true,
+        extract: true,
+        minimize: true,
+        // @ts-ignore
         use: {
           less: {
             javascriptEnabled: true,
           },
         },
-        plugins: [],
       }),
       nodeResolve({
         mainFields: ['module', 'jsxnext:main', 'main'],
@@ -47,7 +43,7 @@ function rollup() {
       commonjs({
         include: /node_modules/,
       }),
-      typescript(),
+      typescript({ sourceMap: false }),
     ],
   };
 }

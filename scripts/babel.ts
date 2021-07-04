@@ -21,13 +21,6 @@ export function getBabelConfig(type: 'cjs' | 'esm') {
     ],
     plugins: [
       [
-        require.resolve('@babel/plugin-transform-runtime'),
-        {
-          useESModules: type === 'esm',
-          version: require('@babel/runtime/package.json').version,
-        },
-      ],
-      [
         require.resolve('babel-plugin-import'),
         {
           libraryName: 'antd',
@@ -39,7 +32,7 @@ export function getBabelConfig(type: 'cjs' | 'esm') {
         {
           name: 'rename-less',
           visitor: {
-            ImportDeclaration(path, source) {
+            ImportDeclaration(path: any) {
               if (path.node.source.value.endsWith('.less')) {
                 path.node.source.value = path.node.source.value.replace(/\.less$/, '.css');
               }
@@ -51,13 +44,15 @@ export function getBabelConfig(type: 'cjs' | 'esm') {
   };
 }
 
-function babelTransform(type: 'cjs' | 'esm', file) {
+function babelTransform(type: 'cjs' | 'esm', file: any) {
   const config = getBabelConfig(type);
 
-  return babel.transform(file.contents, {
-    ...config,
-    filename: file.path,
-  }).code;
+  return (
+    babel.transform(file.contents, {
+      ...config,
+      filename: file.path,
+    })?.code || ''
+  );
 }
 
 export default babelTransform;
